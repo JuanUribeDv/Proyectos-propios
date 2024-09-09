@@ -140,14 +140,41 @@ def united_converted():
         converter.grid_rowconfigure(i, weight=1)
     for j in range(3):
         converter.grid_columnconfigure(j, weight=1)
-   
+def letter_counter():
+    menu.withdraw()
+    lcounter=tk.Tk()
+    lcounter.geometry("400x400")
+    lcounter.title("Letter counter")
 
+    def count ():
+        count=len(str(entry_word.get()))
+        labelcount.config(text=f"This word has {count} letters")
+
+    def backmenu4():
+        lcounter.destroy()
+        menu.deiconify()
+    btn_backmenu4=tk.Button(lcounter, text="back to the menu", command= backmenu4)
+    btn_backmenu4.grid(row=2, column=0)
+    btn_count=tk.Button(lcounter,text="counter", command= count)
+    btn_count.grid(row=1, column=1)
+    entry_word =tk.Entry(lcounter)
+    entry_word.grid(row=0, column=1)
+    labelcount=tk.Label(lcounter,text="There is not a word yet")
+    labelcount.grid(row=2, column=1)
+
+    for i in range(3):
+        lcounter.grid_rowconfigure(i, weight=1)
+    for j in range(3):
+        lcounter.grid_columnconfigure(j, weight=1)
+    
+btn_letter_counter=tk.Button(text="Letter counter", command=letter_counter)
+btn_letter_counter.grid(row=2, column=2)
 btn_calc=tk.Button(text="Calculator", command=calculator)
 btn_calc.grid(row=2, column=0)
 btn_Click_counter=tk.Button(text="Click counter", command=Click_counter)
 btn_Click_counter.grid(row=2, column=1)
-btn_converter=tk.Button(text="United converter", command=united_converted)
-btn_converter.grid(row=2, column=2)
+#btn_converter=tk.Button(text="United converter", command=united_converted)
+#btn_converter.grid(row=2, column=2)
 btn_color=tk.Button(text="New color", command=ColorChange)
 btn_color.grid(row=0, column=1)
 labelmenu=tk.Label(text="WELCOME TO THE TOOLBOX!")
